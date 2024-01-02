@@ -10,17 +10,30 @@ import 'app/routes/app_pages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (!Platform.isLinux) {
+  if (!Platform.isLinux && !Platform.isWindows) {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-  }
 
-  runApp(
-    GetMaterialApp(
-      title: "Application",
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-    ),
-  );
+    runApp(
+      GetMaterialApp(
+        title: "ChatT",
+        debugShowCheckedModeBanner: false,
+        initialRoute: AppPages.INITIAL,
+        getPages: AppPages.routes,
+      ),
+    );
+  } else {
+    runApp(
+      const MaterialApp(
+          title: "Application",
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            body: Center(
+              child: Text("Not supported platform\n"
+                  "Only Android, iOS, Web and MacOS are supported."),
+            ),
+          )),
+    );
+  }
 }
