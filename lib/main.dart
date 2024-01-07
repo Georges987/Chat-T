@@ -10,10 +10,10 @@ import 'app/routes/app_pages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (!Platform.isLinux && !Platform.isWindows) {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+  if (Platform.isLinux && !Platform.isWindows) {
+    // await Firebase.initializeApp(
+    //   options: DefaultFirebaseOptions.currentPlatform,
+    // );
 
     runApp(
       GetMaterialApp(
@@ -31,7 +31,7 @@ void main() async {
           home: Scaffold(
             body: Center(
               child: Text("Not supported platform\n"
-                  "Only Android, iOS, Web and MacOS are supported."),
+                  "Only Android, iOS, Web and MacOS \nare supported."),
             ),
           )),
     );
