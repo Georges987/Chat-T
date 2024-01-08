@@ -10,7 +10,7 @@ import 'app/routes/app_pages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (Platform.isLinux && !Platform.isWindows) {
+  if (!Platform.isLinux && !Platform.isWindows) {
     // await Firebase.initializeApp(
     //   options: DefaultFirebaseOptions.currentPlatform,
     // );
